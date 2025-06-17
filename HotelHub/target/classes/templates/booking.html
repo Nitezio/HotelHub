@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Booking - Hotel Hub</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Hotel Hub</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/customer/dashboard">Dashboard</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Book a Room</h2>
+    <form action="/booking" method="post">
+        <div class="mb-3">
+            <label for="package" class="form-label">Select Package</label>
+            <select class="form-select" id="package" name="package" required>
+                <option value="silver">Silver</option>
+                <option value="gold">Gold</option>
+                <option value="platinum">Platinum</option>
+                <option value="custom">Custom</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="checkIn" class="form-label">Check In</label>
+            <input type="date" class="form-control" id="checkIn" name="checkIn" required>
+        </div>
+        <div class="mb-3">
+            <label for="checkOut" class="form-label">Check Out</label>
+            <input type="date" class="form-control" id="checkOut" name="checkOut" required>
+        </div>
+        <div class="mb-3">
+            <label for="guestCount" class="form-label">Number of Guests</label>
+            <input type="number" class="form-control" id="guestCount" name="guestCount" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+</div>
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+    <p>Contact us: (123) 456-7890 | email@example.com | Location</p>
+</footer>
+</body>
+</html>

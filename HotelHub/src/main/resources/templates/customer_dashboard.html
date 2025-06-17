@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Customer Dashboard - Hotel Hub</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Hotel Hub</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/booking">Booking</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Welcome, <span th:text="${customer.name}"></span></h2>
+    <h3>Your Bookings</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Package</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.bookingId}"></td>
+            <td th:text="${booking.hotelPackage.packageName}"></td>
+            <td th:text="${booking.checkInDate}"></td>
+            <td th:text="${booking.checkOutDate}"></td>
+            <td th:text="${booking.status}"></td>
+            <td>
+                <a th:href="@{/receipt/{id}(id=${booking.bookingId})}" class="btn btn-info">View Receipt</a>
+                <a th:href="@{/cancel/{id}(id=${booking.bookingId})}" class="btn btn-danger">Cancel</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/booking" class="btn btn-primary">Make New Booking</a>
+</div>
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+    <p>Contact us: (123) 456-7890 | email@example.com | Location</p>
+</footer>
+</body>
+</html>
